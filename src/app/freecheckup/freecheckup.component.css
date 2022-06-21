@@ -1,0 +1,8 @@
+#name{
+    text-align: center;
+}
+@media print{
+    button{
+        display: none;
+    }
+}

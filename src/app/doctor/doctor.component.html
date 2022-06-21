@@ -1,0 +1,33 @@
+<h3 id="heading">Today's Available doctor's time table:</h3>
+
+<div class="doctors">
+  <div class="doctortable">
+    <div>
+      <input
+        #query
+        (keyup)="filter(query.value)"
+        type="text"
+        class="form-control"
+        placeholder="Search by name..."
+      />
+    </div>
+    <table class="table table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Doctor's Name</th>
+          <th scope="col">Degree</th>
+          <th scope="col">Start Time</th>
+          <th scope="col">Exit Time</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let dt of filteredDocs" scope="row">
+          <td>{{ dt.name }}</td>
+          <td>{{ dt.degree }}</td>
+          <td>{{ dt.time }}</td>
+          <td>{{dt.exit}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

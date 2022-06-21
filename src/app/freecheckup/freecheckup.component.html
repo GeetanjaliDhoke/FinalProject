@@ -1,0 +1,74 @@
+<div id="name"> <!--Name-->
+    <h2>Free-Checkup</h2>
+    <p><i>
+        Book your <strong>Free-Checkup</strong> with us. <br>
+        Fill the below mentioned form to book your Free-Checkup appointment.
+    </i></p>
+</div>
+
+    <div class="container"> <!--Form container has started-->
+
+
+        <form [formGroup]="checkupform"> <!--Free Checkup form has started-->
+ 
+            <div class="row"> 
+                <div class="col"> <!--Full name-->
+            <div class="mt-2 mb-2">
+                <label>Full Name:</label>
+                <input type="text" class="form-control" formControlName="name"> 
+                <div *ngIf="name.invalid && (name.touched || name.dirty)">
+                    <span *ngIf="name.errors?.required" class="text-danger">Your full name is requested.</span>
+                    <span *ngIf="name.errors?.pattern" class="text-danger">Only alphabets are requested.</span>
+                </div>
+            </div> 
+            </div>
+
+            <div class="col"> <!--Email-->
+            <div class="mt-2 mb-2">
+                <label>Email:</label> 
+                <input type="text" class="form-control" formControlName="email">
+                <div *ngIf="email.invalid && (email.touched || email.dirty)">
+                    <span *ngIf="email.errors?.required" class="text-danger">Your email is requested.</span> 
+                    <span *ngIf="email.errors?.email" class="text-danger">Only valid email is requested.</span>    
+                </div>
+            </div>
+            </div>
+            </div>
+
+        <div class="row">
+            <div class="col"> <!--Phone Number-->
+            <div class="mt-2 mb-2">
+                <label>Phone Number:</label>
+                <input type="text" class="form-control" formControlName="number" minlength="10" maxlength="10">
+                <div *ngIf="number.invalid && (number.touched || number.dirty)">
+                    <span *ngIf="number.errors?.required" class="text-danger">Your phone number is requested.</span>  
+                    <span *ngIf="number.errors?.pattern" class="text-danger">Only numbers are requested.</span>
+                </div>
+            </div> </div>
+ 
+            <div class="col"> <!--Date-->
+            <div class="mt-2 mb-2">
+                <label>Date for Free-Checkup:</label>
+                <input type="date" min="2022-06-18" class="form-control" formControlName="date">
+            </div> 
+            </div> 
+        </div>
+
+
+
+        <div class="row"> <!--Buttons-->
+            <div class="col">
+            <div class="mt-3 mb-2">
+                <button type="button" class="btn btn-success btn-lg" [disabled]="checkupform.invalid">Submit this form</button>
+            </div>
+            </div>
+
+            <div class="col">
+            <div class="mt-3 mb-2">
+                <button onclick="print()" [disabled]="checkupform.invalid" class="btn btn-success btn-lg">Print this form</button>
+            </div> 
+            </div>
+        </div>
+
+        </form> <!--Free Checkup form has ended-->
+    </div>  <!--Form container has ended-->

@@ -1,0 +1,92 @@
+<div id="name"> <!--Name-->
+<h2>Lab-Tests</h2>
+<p><i>
+    Book your <strong>Lab-Test</strong> with us. <br>
+    Fill the below mentioned form to book your lab-test appointment.
+</i></p>
+</div>
+
+    <div class="container">
+
+        <form [formGroup]="labform" (ngSubmit)="save()">
+
+            <div class="row">
+                <div class="col"> <!--Name-->
+            <div class="mt-2 mb-2">
+                <label>Full Name:</label>
+                <input type="text" class="form-control" formControlName="name"> 
+                <div *ngIf="name.invalid && (name.touched || name.dirty)">
+                    <span *ngIf="name.errors?.required" class="text-danger">Your full name is requested.</span>
+                    <span *ngIf="name.errors?.pattern" class="text-danger">Only alphabets are requested.</span>
+                </div>
+            </div> 
+            </div><br>
+
+            <div class="col"> <!--Email-->
+            <div class="mt-2 mb-2">
+                <label>Email:</label> 
+                <input type="text" class="form-control" formControlName="email">
+                <div *ngIf="email.invalid && (email.touched || email.dirty)">
+                    <span *ngIf="email.errors?.required" class="text-danger">Your email is requested.</span> 
+                    <span *ngIf="email.errors?.email" class="text-danger">Only valid email is requested.</span>    
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col"> <!--Phone Number-->
+            <div class="mt-2 mb-2">
+                <label>Phone Number:</label>
+                <input type="text" class="form-control" formControlName="number" minlength="10" maxlength="10">
+                <div *ngIf="number.invalid && (number.touched || number.dirty)">
+                    <span *ngIf="number.errors?.required" class="text-danger">Your phone number is requested.</span>  
+                    <span *ngIf="number.errors?.pattern" class="text-danger">Only numbers are requested.</span>
+                </div>
+            </div> </div>
+ 
+            <div class="col"> <!--Date-->
+            <div class="mt-2 mb-2">
+                <label>Date for Lab-Test:</label>
+                <input type="date" min="2022-06-18" class="form-control" formControlName="date">
+            </div> 
+            </div> 
+        </div>
+
+            <div class="mt-2 mb-2"> <!--Test Selection-->
+            <label for="test">Choose a Lab-Test:</label> <br>
+            <select name="test">
+              <option value="1" id="1">Thyroid Test</option>
+              <option value="2" id="2">Blood Test</option>
+              <option value="3" id="3">Sugar Level Test</option>
+              <option value="4" id="4">Liver Function Test</option>
+              <option value="5" id="5">Complete Blood Count</option>
+              <option value="6" id="6">Vitamin B12</option>
+              <option value="7" id="7">RTPCR Covid Test</option>
+            </select>
+            </div>
+
+
+            <div class="row">
+
+                <div class="col">
+            <div mat-dialog-content class="mt-3 mb-3">
+                <button mat-button (click)="openDialog()" class="btn btn-success btn-lg" [disabled]="labform.invalid">Click to make your payment</button>
+            </div>
+                </div>
+
+                <div class="col">
+            <div class="mt-3 mb-3">
+                <button type="button" class="btn btn-success btn-lg" [disabled]="labform.invalid">Submit this form</button>
+            </div>
+                </div>
+
+             </div>
+
+           
+          
+        </form>
+    </div>
+
+
+

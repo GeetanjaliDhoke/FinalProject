@@ -1,0 +1,34 @@
+#name{
+    text-align: center;
+  }
+  #tabledata{
+    width: 100%;
+    text-align: center;
+  }
+  #para{
+    width: 100%;
+    text-align: center;
+  }
+  #data{
+    padding-top: 20px;
+    text-align: center;
+    width: 100%;
+  }
+  #secondtable{
+    width: 100%;
+    text-align: center;
+  }
+  #H3{
+    padding-top: 15px;
+    text-align: center;
+  }
+  .image2{
+    width: 100%;
+    height: 5%;
+  }
+  
+  .column3{
+    padding-top: 5%;
+    align-content: center;
+    padding-left: 20px
+  }

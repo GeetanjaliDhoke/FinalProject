@@ -1,0 +1,23 @@
+.jumbotron{
+    text-align: center;
+}
+#tabledata{
+    text-align: center;
+    width: 100%;
+    padding: 10 10 10 10;
+}
+.button{
+    padding-top: 20px;
+    align-items: center;
+    text-align: center;
+}
+.tableinfo{
+    text-align: center;
+    width: 100%;
+    padding: 10 10 10 10;
+    padding-top: 10px;
+}
+.line{
+    text-align: center;
+    padding-top: 20px;
+}
