@@ -1,49 +1,34 @@
-<div id="name"> <!--Name-->
-<h2>Lab-Tests</h2>
-<p><i>
-    Book your <strong>Lab-Test</strong> with us. <br>
-    Fill the below mentioned form to book your lab-test appointment.
-</i></p>
+<div id="name"> <!--Header Name-->
+  <h1>Edit Your Booked Lab-Test</h1>
 </div>
-
-<div class="btncontainer1" id="go-back"> <!--Go Back Button has started-->
-  <button class="btn btn-info float-start" id="button" type="submit"
-  [routerLink]="['/Show-Tests']"
-  routerLinkActive="router-link-active">Go Back</button>
-  </div> <!--Go Back Button has ended-->
-
-<div id="buttoncontainer"> <!--Show All Lab-Tests-->
-  <button class="btn btn-info" id="button" type="submit" [routerLink]="['/Labtests']" routerLinkActive="router-link-active" >Booked Lab-Tests</button>
-</div>
-
 
 <div class="container"> <!--Container of form has started-->
   <div class="row top-row"> <!--top row has started-->
     <div class="col-xs-12 row end-xs"> <!--col-xs-12 row end-xs-->
 
+      <div class="btncontainer"> <!--Go Back Button has started-->
+        <button class="btn btn-info float-end" id="button" type="submit" [routerLink]="['/Labtests']"
+        routerLinkActive="router-link-active">Go Back</button>
+        </div> <!--Go Back Button has ended-->
+
         <div class="row"> <!--Form row has started-->
           <div class="col-xs-6">
 
-            <form #LabDetailsForm="ngForm" [formGroup]="labdetailsform"> <!--Form has started-->
+            <form #LabDetailsForm="ngForm"> <!--Form has started-->
 
               <div class="row"> <!--First row has started-->
 
                 <div class="col-xs-6"> <!--Name Column-->
                   <mat-form-field appearance="outline">
                     <mat-label>Name:</mat-label>
-                    <input type="text" matInput [(ngModel)]="labtest.name" name="name" formControlName="name">
-                    <!--display error-->
-                    <mat-error *ngIf="name.errors?.required">Your Name is a required.</mat-error>
-                    <mat-error *ngIf="name.errors?.pattern">Only alphabets are allowed.</mat-error>
+                    <input type="text" matInput [(ngModel)]="labtest.name" name="name" [ngModelOptions]="{standalone: true}">
                   </mat-form-field>
                 </div>
 
                 <div class="col-xs-6"> <!--Email Column-->
                   <mat-form-field appearance="outline">
                     <mat-label>Email:</mat-label>
-                    <input type="text" matInput [(ngModel)]="labtest.email" name="email" formControlName="email">
-                    <!--display error-->
-                    <mat-error *ngIf="email.errors?.email">Valid Email is a required.</mat-error>
+                    <input type="text" matInput [(ngModel)]="labtest.email" name="email" [ngModelOptions]="{standalone: true}">
                   </mat-form-field>
                 </div>
               </div> <!--First row has ended-->
@@ -52,18 +37,14 @@
                 <div class="col-xs-6"> <!--Number Column-->
                   <mat-form-field appearance="outline">
                     <mat-label>Phone Number:</mat-label>
-                    <input type="text" matInput [(ngModel)]="labtest.phone" name="phone"
-                    formControlName="phone" minlength="10" maxlength="10">
-                    <!--display error-->
-                    <mat-error *ngIf="phone.errors?.required">Phone Number is a required.</mat-error>
-                    <mat-error *ngIf="phone.errors?.pattern">Only numbers are allowed.</mat-error>
+                    <input type="text" matInput [(ngModel)]="labtest.phone" name="phone" [ngModelOptions]="{standalone: true}">
                   </mat-form-field>
                 </div>
 
                 <div class="col-xs-6"> <!--Appointment Date-->
                   <mat-form-field appearance="outline">
-                    <mat-label>Appointment Date:</mat-label>
-                    <input matInput [matDatepicker]="picker" [(ngModel)]="labtest.date" formControlName="date"  min="2022-07-04">
+                    <mat-label>{{labtest.date}}</mat-label>
+                    <input matInput [matDatepicker]="picker" [(ngModel)]="labtest.date" name="date" [ngModelOptions]="{standalone: true}">
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
                   </mat-form-field>
@@ -75,7 +56,8 @@
                   <div class="col-xs-6"> <!--Timing Selection-->
                     <mat-form-field appearance="outline">
                       <mat-label>Choose Timing:</mat-label>
-                      <select matNativeControl [(ngModel)]="labtest.timing" name="timing" formControlName="timing">
+                      <select matNativeControl [(ngModel)]="labtest.timing" name="timing" [ngModelOptions]="{standalone: true}">
+                        <option>{{labtest.timing}}</option>
                         <option value="Morning 8AM-12PM">Morning 8AM-12PM</option>
                         <option value="Afternoon 2PM-4PM">Afternoon 2PM-4PM</option>
                         <option value="Evening 6PM-8PM">Evening 6PM-8PM</option>
@@ -86,7 +68,8 @@
                   <div class="col-xs-6"> <!--Test Selection-->
                     <mat-form-field appearance="outline">
                       <mat-label>Choose a Lab-Test:</mat-label>
-                      <select matNativeControl [(ngModel)]="labtest.test" name="test" formControlName="test">
+                      <select matNativeControl [(ngModel)]="labtest.test" name="test" [ngModelOptions]="{standalone: true}">
+                        <option>{{labtest.test}}</option>
                         <option value="Thyroid Test">Thyroid Test</option>
                         <option value="Blood Test">Blood Test</option>
                         <option value="Sugar Level Test">Sugar Level Test</option>
@@ -100,8 +83,12 @@
                 </div> <!--third row has started-->
 
                 <div class="row" id="buttonrow"> <!--Buttons Row has started-->
-                  <div class="col-xs-4"> <!--Add Button-->
-                    <button class="btn btn-info" (click)="onAdd()">BOOK NOW</button>
+                  <div class="col-xs-4"> <!--Update Button-->
+                    <button class="btn btn-info" (click)="onUpdate()">Save Updates</button>
+                  </div>
+
+                  <div class="col-xs-4"> <!--Delete Button-->
+                    <button class="btn btn-info" (click)="onDelete()">Delete Lab-Test</button>
                   </div>
 
                 </div> <!--Buttons Row has ended-->
@@ -114,3 +101,4 @@
     </div> <!--col-xs-12 row end-xs-->
   </div> <!--top row has ended-->
 </div> <!--Container of form has ended-->
+

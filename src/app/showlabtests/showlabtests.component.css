@@ -1,0 +1,27 @@
+#name{
+  text-align: center;
+}
+#tablelabtests{
+  width: 100%;
+}
+#tabledata{
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+}
+.searh-input {
+  outline: none;
+  border: 1px solid #CCC;
+  padding: 8px 10px;
+  border-radius: 3px;
+  float: right;
+}
+.searh-input:active {
+  border: 1px solid #BBB;
+}
+.searh-input:focus {
+  border: 1px solid #AAA;
+}
+.row{
+  padding-bottom: 10px;
+}

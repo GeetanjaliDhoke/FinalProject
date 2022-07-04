@@ -1,0 +1,109 @@
+<div id="name"> <!--Header Name-->
+  <h1>Edit Your Booked Radiography-Test</h1>
+</div>
+
+<div class="container"> <!--Container of form has started-->
+  <div class="row top-row"> <!--top row has started-->
+    <div class="col-xs-12 row end-xs"> <!--col-xs-12 row end-xs-->
+
+      <div class="btncontainer"> <!--Go Back Button has started-->
+        <button class="btn btn-info float-end" id="button" type="submit"
+        [routerLink]="['/showradiotests']"
+        routerLinkActive="router-link-active">Go Back</button>
+        </div> <!--Go Back Button has ended-->
+
+        <div class="row"> <!--Form row has started-->
+          <div class="col-xs-6">
+
+            <form #RadiologyDetailsForm="ngForm"> <!--Form has started-->
+
+              <div class="row"> <!--First row has started-->
+
+                <div class="col-xs-6"> <!--Name Column-->
+                  <mat-form-field appearance="outline">
+                    <mat-label>Name:</mat-label>
+                    <input type="text" matInput [(ngModel)]="radiotest.name" name="name"
+                    [ngModelOptions]="{standalone: true}">
+                  </mat-form-field>
+                </div>
+
+                <div class="col-xs-6"> <!--Email Column-->
+                  <mat-form-field appearance="outline">
+                    <mat-label>Email:</mat-label>
+                    <input type="text" matInput [(ngModel)]="radiotest.email" name="email"
+                    [ngModelOptions]="{standalone: true}">
+                  </mat-form-field>
+                </div>
+              </div> <!--First row has ended-->
+
+              <div class="row"> <!--second row has started-->
+                <div class="col-xs-6"> <!--Number Column-->
+                  <mat-form-field appearance="outline">
+                    <mat-label>Phone Number:</mat-label>
+                    <input type="text" matInput [(ngModel)]="radiotest.phone" name="phone" minlength="10" maxlength="10"
+                    [ngModelOptions]="{standalone: true}">
+                  </mat-form-field>
+                </div>
+
+                <div class="col-xs-6"> <!--Appointment Date-->
+                  <mat-form-field appearance="outline">
+                    <mat-label>{{radiotest.date}}</mat-label>
+                    <input matInput [matDatepicker]="picker" [(ngModel)]="radiotest.date"
+                    [ngModelOptions]="{standalone: true}">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
+                </div>
+                </div> <!--second row has ended-->
+
+                <div class="row"> <!--third row has started-->
+
+                  <div class="col-xs-6"> <!--Timing Selection-->
+                    <mat-form-field appearance="outline">
+                      <mat-label>Choose Timing:</mat-label>
+                      <select matNativeControl [(ngModel)]="radiotest.timing" name="timing"
+                      [ngModelOptions]="{standalone: true}">
+                        <option>{{radiotest.timing}}</option>
+                        <option value="Morning 8AM-12PM">Morning 8AM-12PM</option>
+                        <option value="Afternoon 2PM-4PM">Afternoon 2PM-4PM</option>
+                        <option value="Evening 6PM-8PM">Evening 6PM-8PM</option>
+                      </select>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-xs-6"> <!--Test Selection-->
+                    <mat-form-field appearance="outline">
+                      <mat-label>Choose Test:</mat-label>
+                      <select matNativeControl [(ngModel)]="radiotest.test" name="test"
+                      [ngModelOptions]="{standalone: true}">
+                        <option>{{radiotest.test}}</option>
+                        <option value="X-Ray">X-Ray</option>
+                        <option value="CT-Scan">CT-Scan</option>
+                        <option value="MRI">MRI</option>
+                        <option value="MRI">Ultrasound</option>
+                      </select>
+                    </mat-form-field>
+                  </div>
+
+                </div> <!--third row has started-->
+
+                <!--Buttons Row has started-->
+                <div class="row" id="buttonrow"> <!--Update Button-->
+                  <div class="col-xs-4">
+                    <button class="btn btn-info" (click)="onUpdate()">Save Updates</button>
+                  </div>
+
+                  <div class="col-xs-4"> <!--Delete Button-->
+                    <button class="btn btn-info" (click)="onDelete()">Delete Radiography-Test</button>
+                  </div>
+
+                </div>
+                <!--Buttons Row has ended-->
+
+
+              </form>
+            </div>
+          </div> <!--Form row has ended-->
+
+    </div> <!--col-xs-12 row end-xs-->
+  </div> <!--top row has ended-->
+</div> <!--Container of form has started-->

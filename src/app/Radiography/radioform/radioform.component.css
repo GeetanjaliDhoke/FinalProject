@@ -1,12 +1,15 @@
 #name{
-    text-align: center;
+  text-align: center;
 }
 #button{
-  float: right;
+float: right;
+}
+#button1{
+  float: left;
 }
 #buttoncontainer{
-  padding-bottom: 50px;
-  padding-right: 70px;
+padding-bottom: 50px;
+padding-right: 70px;
 }
 .btncontainer{
   padding-bottom: 10px;

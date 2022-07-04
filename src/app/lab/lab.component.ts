@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { labtests } from '../api-models/labtests.model';
+import { LabserviceService } from '../labservice.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router} from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { PaymentComponent } from '../payment/payment.component';
-import {MatDialog} from '@angular/material/dialog';
 
 
 @Component({
@@ -11,34 +14,61 @@ import {MatDialog} from '@angular/material/dialog';
 })
 export class LabComponent implements OnInit {
 
+  labid: number | undefined | null | string;
+  // date!: number| string;
 
-  constructor(public dialog: MatDialog) { }
+  labtest: labtests = {
+    labid:0,
+    name: '',
+    email: '',
+    phone: '',
+    date: '',
+    timing:'',
+    test: ''
+  };
 
-  openDialog() {
-    this.dialog.open(PaymentComponent);
-  }
 
-  labform:any;
+  constructor(private labservice:LabserviceService,
+    private snackbar: MatSnackBar,
+    private router:Router) { }
+
+    labdetailsform: any;
 
   ngOnInit(): void {
-
-    this.labform = new FormGroup({
-      "name": new FormControl(null,[Validators.required,Validators.pattern('[a-zA-Z]*')]),
+    this.labdetailsform = new FormGroup({
+      "name": new FormControl(null,[Validators.required,Validators.pattern('^[a-zA-Z_-]*')]),
       "email": new FormControl(null,[Validators.required,Validators.email]),
-      "number": new FormControl(null,[Validators.required,Validators.pattern('[0-9]*')]),
-      "date": new FormControl(null,Validators.required)
-    }); 
-
+      "phone": new FormControl(null,[Validators.required,Validators.pattern('^[0-9_-]*')]),
+      "date": new FormControl(null,[Validators.required]),
+      "timing": new FormControl(null,[Validators.required]),
+      "test": new FormControl(null,[Validators.required])
+    })
   }
 
-  save(){
-    console.log(this.labform.value);
-  }
+  onAdd():void{
+      this.labservice.addlabtest(this.labtest)
+    .subscribe(
+      (successResponse) => {
+        console.log(successResponse);
+        //show a notification
+        this.snackbar.open('Your Lab-Tests appointment has booked successfully!', undefined,{
+          duration:2000
+        });
+        setTimeout(() => {
+          this.router.navigateByUrl('/Labtests');
+        }, 2000);
+      }
+      // ,
+      // (errorResponse) => {
+      //   console.log(errorResponse);
+      // }
+      );
+    }
 
-  get name(){return this.labform.get('name');}
-  get email(){return this.labform.get('email');}
-  get number(){return this.labform.get('number');}
-
-
-
+  get name() {return this.labdetailsform.get('name');}
+  get email() {return this.labdetailsform.get('email');}
+  get phone() {return this.labdetailsform.get('phone');}
+  get date() {return this.labdetailsform.get('date');}
+  get timing() {return this.labdetailsform.get('timing');}
+  get test() {return this.labdetailsform.get('test');}
 }

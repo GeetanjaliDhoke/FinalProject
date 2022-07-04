@@ -1,0 +1,46 @@
+<div class="container"> <!--Header has started-->
+  <div class="jumbotron">
+    <div class="row">
+      <div class="col-xl">
+        <h2>Need help with booking your test?</h2>
+        <p>We are here to help you.</p>
+      </div>
+      <div class="col-xl">
+        <mat-icon>call</mat-icon>
+        <br> <br> <p>1234567898</p>
+      </div>
+    </div>
+  </div>
+</div> <!--Header has ended-->
+
+<div class="container" id="buttons"> <!--Form Buttons has started-->
+  <div class="row">
+    <div class="col-xl">
+      <button class="button btn-lg" [routerLink]="['/lab']" routerLinkActive="router-link-active">Pathology - Tests</button>
+    </div>
+
+  <div class="col-xl">
+    <button class="button btn-lg" [routerLink]="['/radio']" routerLinkActive="router-link-active">Radiology - Tests</button>
+  </div>
+  </div>
+</div> <!--Form Buttons has ended-->
+
+<div class="container" id="Information"> <!--Information about Radiology & Pathology has started-->
+  <div class="row">
+    <div class="col">
+      <h1>What Radiology-Tests We Offer?</h1>
+      <p><strong>Radiographs:</strong> <br> X-rays to look at bones, the chest or the abdomen.</p>
+      <p><strong>CT (Computed Tomography):</strong> <br> A CT captures multiple x-ray angles of the patient using a doughnut-shaped machine, then creates computer-processed images.</p>
+      <p><strong>MRI (Magnetic Resonance Imaging):</strong> <br> An MRI uses magnetic fields and radio waves with computer processing to create images.</p>
+    </div>
+
+    <div class="col">
+      <h1>What Pathology-Tests We Offer?</h1>
+      <p><strong>Complete Blood Count:</strong> <br>A complete blood count (CBC) is a blood test. It gives your provider <br> information about your blood and overall health.</p>
+      <p><strong>The vitamin B12:</strong> <br>The vitamin B12 level is a blood test that measures how much <br> vitamin B12 is in your blood.</p>
+      <p><strong>RT-PCR test:</strong> <br> This COVID-19 test
+         detects genetic material of the virus using a <br>
+          lab technique called reverse transcription polymerase chain reaction(RT-PCR).</p>
+    </div>
+  </div>
+</div> <!--Information about Radiology & Pathology has ended-->

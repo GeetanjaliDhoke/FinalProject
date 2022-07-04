@@ -1,6 +1,5 @@
-// HATIM CODE 
+// HATIM CODE
 import { Component, OnInit } from '@angular/core';
-import { CartService } from 'src/app/service/cart.service';
 
 @Component({
   selector: 'nav-bar',
@@ -14,20 +13,13 @@ export class NavBarComponent implements OnInit {
 
   logosvg :string="assets/images/Calisya.svg";
 
-  constructor(private cartService : CartService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.cartService.getProducts()
-    .subscribe(res=>{
-      this.totalItem = res.length;
-    })
-  }
-  search(event:any){
-    this.searchTerm = (event.target as HTMLInputElement).value;
-    console.log(this.searchTerm);
-    this.cartService.search.next(this.searchTerm);
   }
 
-}
+  }
+
+
 
 
